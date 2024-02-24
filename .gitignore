@@ -1,2 +1,3 @@
 chromedriver/
 venv/
+.DS_Store
