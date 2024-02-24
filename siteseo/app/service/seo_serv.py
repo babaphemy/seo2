@@ -1,8 +1,8 @@
 import requests
-from selenium import webdriver
+from selenium.webdriver.firefox.options import Options
 from bs4 import BeautifulSoup
-from app.service import es_imager
-from app.util import utils
+from app.service import play_serv
+
 
 def get_page_info(url):
     result_dict = {}
@@ -63,21 +63,28 @@ def handle_friendly_url(url: str) -> dict:
     return non_friendly
 
 def image_check(url: str) -> dict:
-    response = requests.get(url)
-    response.raise_for_status()  # Raise an exception for non-200 status codes
+    pass
+    # response = requests.get(url)
+    # response.raise_for_status()  # Raise an exception for non-200 status codes
 
-    result = {"friendly": True, "link_details": []}
+    # result = {"friendly": True, "link_details": []}
 
-    soup = BeautifulSoup(response.content, "html.parser")
-    if utils.is_javascript:
-        chrome_options = Options()
-        driver = webdriver.Chrome(executable_path="/chromedriver/chromedriver")
-    all_img = soup.find_all("img")
-    print(soup)
+    # soup = BeautifulSoup(response.content, "html.parser")
+    # is_javascript = soup.find(id='root')
+    # all_img = soup.find_all('img')
+    # if is_javascript:
+    #     options = Options()
+    #     options.add_argument("--headless")
+    #     driver = webdriver.Firefox(options=options)
+    #     driver.get(url)
+    #     driver.implicitly_wait(10)
+    #     html_content = driver.page_source
+    #     soup = BeautifulSoup(html_content, "html.parser")
+    #     all_img = soup.find_all("img")
+    # image_info = es_imager.check_image_info(all_img)
+    # result["images"] = image_info
+    # return result
 
-    image_info = es_imager.check_image_info(all_img)
-    result["images"] = image_info
-    return result
 
 
 

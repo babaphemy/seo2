@@ -10,8 +10,8 @@ def check_image_info(images):
     for image in images:
         image_details = {
             "src": image.get("src", None),
-            "width": int(image.get("width", 0)),
-            "height": int(image.get("height", 0)),
+            "width": image.get("width", None),
+            "height": image.get("height", None),
             "alt": image.get("alt", None),
             "is_svg": image.get("src", "").endswith(".svg"),
         }
@@ -50,3 +50,31 @@ def check_image_alt_attribute(image):
     if not alt_text:
         return False
     return True
+
+async def get_image_properties(image_handle, page):
+    rendered_size = await image_handle.evaluate("el => [el.offsetWidth, el.offsetHeight]")
+    rendered_aspect_ratio = rendered_size[0] / rendered_size[1]
+
+    # Option 1: Using developer tools (might be less efficient)
+    intrinsic_size_and_ratio = await page.evaluate(
+        """
+        const el = document.querySelector("%s")
+        const computedStyle = window.getComputedStyle(el)
+        return [el.naturalWidth, el.naturalHeight, computedStyle.aspectRatio]
+        """ % image_handle.selector
+    )
+
+    # Option 2: Download and calculate file size (might not be optimal)
+    # image_data = await page.screenshot({clip: image_handle.bounding_box()})
+    # file_size = len(image_data)
+
+    # Get current source
+    current_source = await image_handle.evaluate("el => el.src")
+
+    return {
+        "rendered_size": rendered_size,
+        "rendered_aspect_ratio": rendered_aspect_ratio,
+        "intrinsic_size_and_ratio": intrinsic_size_and_ratio,
+        "file_size": None,  # Replace with Option 2 if needed
+        "current_source": current_source,
+    }

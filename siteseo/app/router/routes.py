@@ -21,7 +21,7 @@ def url_friendliness(seo: Seo) -> dict:
     return seo_serv.handle_friendly_url(seo.url)
 @router.post('/images')
 def image_test(seo: Seo) -> dict:
-    return seo_serv.image_check(seo.url)
+    return play_serv.check_image(seo.url)
 @router.post('/deprecated')
 def deprecated_html(v: Optional[List[str]] = Query(None)):
     return {"version": v}
