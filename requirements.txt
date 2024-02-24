@@ -1,0 +1,10 @@
+fastapi
+neo4j
+playwright
+pytest
+psycopg2-binary
+gunicorn
+dnspython
+requests
+uvicorn
+selenium

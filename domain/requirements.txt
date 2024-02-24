@@ -1,0 +1,5 @@
+fastapi
+neo4j
+dnspython
+pytest
+sqlalchemy
