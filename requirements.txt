@@ -1,5 +1,6 @@
 fastapi
 neo4j
+bs4
 playwright
 pytest
 psycopg2-binary
@@ -8,3 +9,4 @@ dnspython
 requests
 uvicorn
 selenium
+SQLAlchemy
