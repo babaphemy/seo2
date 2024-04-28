@@ -9,3 +9,11 @@ Uses:
 3.  Scrappy
 4.  Beautifulsoup
 5.  FastAPI
+
+## Served by
+
+- horacelearning.us
+
+## Run
+
+- uvicorn siteseo.app.main:seo_app --reload

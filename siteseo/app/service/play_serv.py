@@ -1,5 +1,5 @@
 from playwright.sync_api import sync_playwright
-from app.service import es_imager
+from siteseo.app.service import es_imager
 def handle_friendly_url(url: str) -> dict:
     result = {}
     with sync_playwright() as p:

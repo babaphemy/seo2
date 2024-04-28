@@ -1,8 +1,8 @@
 from typing import List,Optional
-from fastapi import APIRouter, Query,Body,Path
-from app.service import seo_serv
-from app.service import play_serv
-from app.db.schema import Seo
+from fastapi import APIRouter, Query,Path
+from siteseo.app.service import seo_serv
+from siteseo.app.service import play_serv
+from siteseo.app.db.schema import Seo
 
 router = APIRouter(
     prefix='/seo',
