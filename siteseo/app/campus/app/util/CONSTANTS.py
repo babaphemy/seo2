@@ -4,7 +4,8 @@ import os
 load_dotenv()
 
 SG = os.getenv("SENDG_KEY")
-SENDER = os.getenv("webmaster@myeverlasting.net")
-SMTP_USER = os.getenv("AKIAWCT4F2SZBXBT35PS")
-SMTP_PASS = os.getenv("BN2JIp9juC2lhOJ2qozgbultUmeYFVM/HsG6BTGgdExJ")
+SENDER = os.getenv('sender')
+SMTP_USER = os.getenv("smtp_user")
+SMTP_PASS = os.getenv('smtp_pass')
 SMTP_HOST = os.getenv("email-smtp.eu-west-1.amazonaws.com")
+DB_PATH = os.getenv("db_url")
